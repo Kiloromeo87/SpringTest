@@ -27,9 +27,9 @@ public class ArtistService {
         if(artist.getFirstname().equals("") || artist.getLastname().equals("")
                 || artist.getFirstname() == null || artist.getLastname() == null){
             throw new ValidationException("Missing Data");
-        }
+        }else{
 
-        artistRepository.save(artist);
+        artistRepository.save(artist);}
     }
 
     public void updateArtist(Artist artist) {

@@ -26,8 +26,8 @@ public class AlbumService {
     public void createAlbum(Album album) {
         if(album.getTitle().equals("") || album.getTitle() == null || album.getCount() <= 0){
             throw new ValidationException("Missing data");
-        }
-        albumRepository.save(album);
+        } else{
+        albumRepository.save(album);}
     }
 
     public void updateAlbum(Album album) {
