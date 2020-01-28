@@ -1,6 +1,5 @@
 package hu.flowacademy.musicstore.Controller;
 
-import hu.flowacademy.musicstore.Model.Album;
 import hu.flowacademy.musicstore.Model.Artist;
 import hu.flowacademy.musicstore.Service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;

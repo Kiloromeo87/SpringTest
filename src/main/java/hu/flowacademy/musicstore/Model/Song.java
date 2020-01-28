@@ -1,5 +1,7 @@
 package hu.flowacademy.musicstore.Model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,6 +32,7 @@ public class Song {
     private String lyrics;
 
     @Column
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate year;
 
     @Column
