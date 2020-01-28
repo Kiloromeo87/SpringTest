@@ -1,5 +1,6 @@
 package hu.flowacademy.musicstore.Service;
 
+import hu.flowacademy.musicstore.Exception.ValidationException;
 import hu.flowacademy.musicstore.Model.Album;
 import hu.flowacademy.musicstore.Repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class AlbumService {
 
 
     public void createAlbum(Album album) {
+        if(album.getTitle().equals("") || album.getTitle() == null || album.getCount() <= 0){
+            throw new ValidationException("Missing data");
+        }
         albumRepository.save(album);
     }
 

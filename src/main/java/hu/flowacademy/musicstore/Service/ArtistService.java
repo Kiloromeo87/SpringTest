@@ -1,5 +1,6 @@
 package hu.flowacademy.musicstore.Service;
 
+import hu.flowacademy.musicstore.Exception.ValidationException;
 import hu.flowacademy.musicstore.Model.Artist;
 import hu.flowacademy.musicstore.Repository.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class ArtistService {
 
 
     public void createArtist(Artist artist) {
+        if(artist.getFirstname().equals("") || artist.getLastname().equals("")
+                || artist.getFirstname() == null || artist.getLastname() == null){
+            throw new ValidationException("Missing Data");
+        }
+
         artistRepository.save(artist);
     }
 
