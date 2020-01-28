@@ -3,6 +3,8 @@ package hu.flowacademy.musicstore.Controller;
 import hu.flowacademy.musicstore.Model.Album;
 import hu.flowacademy.musicstore.Service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,13 +27,16 @@ public class AlbumController {
     }
 
     @PostMapping
-    public void createAlbum(@RequestBody Album album){
+    public ResponseEntity<Void> createAlbum(@RequestBody Album album){
         albumService.createAlbum(album);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PutMapping
-    public void updateAlbum(@RequestBody Album album){
+    public ResponseEntity<Void> updateAlbum(@RequestBody Album album){
+
         albumService.updateAlbum(album);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")

@@ -3,6 +3,8 @@ package hu.flowacademy.musicstore.Controller;
 import hu.flowacademy.musicstore.Model.Artist;
 import hu.flowacademy.musicstore.Service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +28,9 @@ public class ArtistController {
     }
 
     @PostMapping
-    public void createArtist(@RequestBody Artist artist){
+    public ResponseEntity<Void> createArtist(@RequestBody Artist artist){
         artistService.createArtist(artist);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PutMapping
